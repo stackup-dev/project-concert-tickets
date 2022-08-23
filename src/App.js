@@ -34,7 +34,18 @@ function App() {
     return arr;
   }
 
-  async function connectZilpay() {}
+async function connectZilpay() {
+ try {
+  await window.zilPay.wallet.connect();
+  if (window.zilPay.wallet.isConnect) {
+   setZilpayConnected(true);
+  } else {
+   alert("Zilpay connection failed, try again...");
+  }
+ } catch (error) {
+  console.log(error);
+ }
+}
 
   function updateContractAddress() {}
 
